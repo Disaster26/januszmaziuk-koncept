@@ -1,8 +1,8 @@
 (function(){
   var d=document;
   // menu mobilne
-  var bm=d.querySelector('.ikon.men'),pn=d.querySelector('.panel');
-  if(bm&&pn){bm.addEventListener('click',function(){var o=pn.classList.toggle('otw');bm.setAttribute('aria-expanded',o);d.body.style.overflow=o?'hidden':'';});}
+  var bm=d.querySelector('.men'),pn=d.querySelector('.panel');
+  if(bm&&pn){bm.addEventListener('click',function(){var o=pn.classList.toggle('otw');bm.setAttribute('aria-expanded',o);bm.textContent=o?'Zamknij':'Menu';d.body.style.overflow=o?'hidden':'';});}
 
   // przewijane tory: przeciaganie mysza + strzalki
   d.querySelectorAll('.przewin').forEach(function(w){
@@ -24,8 +24,7 @@
   var certy=[].slice.call(d.querySelectorAll('[data-lb]'));
   if(certy.length){
     var lb=d.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Certyfikat');
-    var ic=function(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+p+'"/></svg>';};
-    lb.innerHTML='<button class="zam" aria-label="Zamknij">'+ic('M6 6l12 12M18 6L6 18')+'</button><button class="pop" aria-label="Poprzedni">'+ic('M15 6l-6 6 6 6')+'</button><img alt=""><p></p><button class="nas" aria-label="Następny">'+ic('M9 6l6 6-6 6')+'</button>';
+    lb.innerHTML='<button class="zam" aria-label="Zamknij">Zamknij</button><button class="pop" aria-label="Poprzedni">&lsaquo;</button><img alt=""><p></p><button class="nas" aria-label="Następny">&rsaquo;</button>';
     d.body.appendChild(lb);
     var im=lb.querySelector('img'),tx=lb.querySelector('p'),i=0,ost=null;
     // grupy: lightbox przechodzi tylko po certyfikatach z tego samego zbioru (strona)
